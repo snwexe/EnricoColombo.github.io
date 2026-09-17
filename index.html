@@ -3,86 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="3;url=https://github.com/snwexe/EnricoColombo.github.io">
 <title>Enrico Colombo</title>
 <style>
   * { box-sizing: border-box; }
+  :root {
+    --bg1: #0f172a;
+    --bg2: #1e1b4b;
+    --accent1: #38bdf8;
+    --accent2: #a855f7;
+  }
+  html, body {
+    height: 100%;
+  }
   body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
+    background: radial-gradient(circle at 20% 20%, var(--bg2), var(--bg1) 60%);
     color: #f1f5f9;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
+    overflow: hidden;
+    position: relative;
   }
+  .glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    z-index: 0;
+  }
+  .glow.one { background: var(--accent1); top: -80px; left: -80px; }
+  .glow.two { background: var(--accent2); bottom: -100px; right: -60px; }
+
   .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 48px 40px;
-    max-width: 480px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 52px 44px;
+    max-width: 460px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    animation: rise 0.6s ease;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .avatar {
-    width: 96px;
-    height: 96px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    margin: 0 auto 22px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 700;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
   }
   h1 {
     margin: 0 0 6px;
-    font-size: 28px;
+    font-size: 30px;
+    letter-spacing: -0.5px;
   }
   p.subtitle {
-    margin: 0 0 24px;
+    margin: 0 0 30px;
     color: #94a3b8;
     font-size: 15px;
   }
-  .links {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .links a {
-    color: #e2e8f0;
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #0f172a;
     text-decoration: none;
-    padding: 10px 18px;
-    border: 1px solid rgba(255,255,255,0.15);
+    padding: 14px 28px;
     border-radius: 999px;
-    font-size: 14px;
-    transition: background 0.2s ease;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 25px rgba(56,189,248,0.25);
   }
-  .links a:hover {
-    background: rgba(255,255,255,0.1);
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(168,85,247,0.35);
   }
-  footer {
-    margin-top: 28px;
-    font-size: 12px;
+  .cta svg { width: 18px; height: 18px; }
+
+  .redirect-note {
+    margin-top: 22px;
+    font-size: 12.5px;
     color: #64748b;
+  }
+  .redirect-note a {
+    color: #94a3b8;
+  }
+
+  .bar {
+    margin-top: 16px;
+    width: 100%;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .bar span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    animation: fill 3s linear forwards;
+  }
+  @keyframes fill {
+    to { width: 100%; }
   }
 </style>
 </head>
 <body>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
   <div class="card">
     <div class="avatar">EC</div>
     <h1>Enrico Colombo</h1>
     <p class="subtitle">Estudante de Programação</p>
-    <div class="links">
-      <a href="https://github.com/snwexe" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:enriconc1007@gmail.com">E-mail</a>
-    </div>
-    <footer>Página publicada com GitHub Pages</footer>
+
+    <a class="cta" href="https://github.com/snwexe/EnricoColombo.github.io">
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+        .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+        .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+      </svg>
+      Ver repositório no GitHub
+    </a>
+
+    <div class="bar"><span></span></div>
+    <p class="redirect-note">
+      Redirecionando automaticamente em instantes...<br>
+      Se não funcionar, <a href="https://github.com/snwexe/EnricoColombo.github.io">clique aqui</a>.
+    </p>
   </div>
 </body>
 </html>
